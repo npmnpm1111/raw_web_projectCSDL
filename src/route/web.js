@@ -8,7 +8,6 @@ const clinicRoutes = require('./clinic');
 const nhapphongkhamRoutes = require('./nhapphongkham');
 const dangkyRoutes = require('./dangky');
 const thongtinRoutes = require('./thongtin');
-const chuyenkhoaRoutes = require('./chuyen-khoa');
 let router = express.Router();
 let initWebRoutes = (app) => {
     // Configure multer
@@ -22,7 +21,6 @@ let initWebRoutes = (app) => {
     router.use('/dangky', dangkyRoutes);
     router.use('/nhapphongkham', nhapphongkhamRoutes);
     router.use('/thongtin', thongtinRoutes);
-    router.use('/chuyen-khoa', chuyenkhoaRoutes);
     router.get('/chinhsua', homeController.geteditCRUD);
     router.post('/post-crud', homeController.postCRUD);
     router.post('/put-crud', homeController.putCRUD);
