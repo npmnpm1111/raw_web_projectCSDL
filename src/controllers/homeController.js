@@ -78,6 +78,13 @@ let getChuyenKhoaSpecialtyPage = (req, res) => { // new function
     res.render('chuyenkhoa_specialty.ejs', {specialty: specialty});
 }
 
+let putClinic = async(req,res) => {
+    let data = req.body;
+    await CRUDservices.updateClinicData(data);
+    return res.redirect('/nhapphongkham'); 
+}
+
+
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
@@ -88,5 +95,6 @@ module.exports = {
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD, // Export the new function
     getChuyenKhoaPage: getChuyenKhoaPage,
-    getChuyenKhoaSpecialtyPage: getChuyenKhoaSpecialtyPage
+    getChuyenKhoaSpecialtyPage: getChuyenKhoaSpecialtyPage,
+    putClinic: putClinic,
 };
