@@ -2,6 +2,18 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../models/index');
 
+// GET route for /clinic
+router.get('/', (req, res) => {
+  db.Clinic.findAll()
+    .then((clinics) => {
+      res.render('clinic', { clinics: clinics });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send('An error occurred.');
+    });
+});
+
 // GET route for /clinic/:slug
 router.get('/:slug', (req, res) => {
   const slug = req.params.slug;
@@ -15,10 +27,8 @@ router.get('/:slug', (req, res) => {
     })
     .catch((error) => {
       console.log(error);
-      res.status(500).send('DMM');
+      res.status(500).send('An error occurred.');
     });
 });
-
-// Other routes...
 
 module.exports = router;
