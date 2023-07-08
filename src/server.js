@@ -11,6 +11,7 @@ let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use('/uploads', express.static('uploads'));
 
 viewEngine(app);
 initWebRoutes(app);

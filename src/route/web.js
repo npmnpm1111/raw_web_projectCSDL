@@ -11,8 +11,8 @@ const thongtinRoutes = require('./thongtin');
 let router = express.Router();
 let initWebRoutes = (app) => {
     // Configure multer
-    let upload = multer();
-    app.use(upload.array());
+    // let upload = multer();
+    // app.use(upload.array());
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     router.get('/', homeController.getHomePage);

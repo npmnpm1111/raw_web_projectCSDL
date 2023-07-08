@@ -62,22 +62,12 @@
     <div class="container">
         <h1>Các phòng khám</h1>
         <div class="gallery">
-            <div class="image">
-                <img src="https://gamek.mediacdn.vn/133514250583805952/2022/6/18/-16555136658111107887341.jpg" alt="Image 1">
-                <button class="button-description" onclick="window.location.href='/chuyen-khoa/tim-mach'">Lee Sin</button>
-            </div>
-            <div class="image">
-                <img src="https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt41c476486b063ef8/60ee13df31f9ee2ab08a4dfe/Yasuo_0.jpg" alt="Image 2">
-                <button class="button-description" onclick="window.location.href='/chuyen-khoa/than-kinh'">Yasuo</button>
-            </div>
-            <div class="image">
-                <img src="https://static.zerochan.net/Zed.full.2896954.jpg" alt="Image 3">
-                <button class="button-description" onclick="window.location.href='/chuyen-khoa/tim-mach'">Zed</button>
-            </div>
-            <div class="image">
-                <img src="https://static.zerochan.net/Master.Yi.full.2297318.jpg" alt="Image 4">
-                <button class="button-description" onclick="window.location.href='/chuyen-khoa/than-kinh'">Master Yi</button>
-            </div>
+            <% clinics.forEach(function(clinic) { %>
+                <div class="image">
+                    <img src="<%= clinic.image %>" alt="<%= clinic.name %>">
+                    <button class="button-description" onclick="window.location.href='/clinic/<%= clinic.slug %>'"><%= clinic.name %></button>
+                </div>
+            <% }); %>
         </div>
     </div>
 </body>

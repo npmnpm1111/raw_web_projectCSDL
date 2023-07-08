@@ -67,9 +67,11 @@ let deleteCRUD = async (req, res) => {
     res.redirect('/thongtin');
 }
 
-let getChuyenKhoaPage = (req, res) => { // new function
-    res.render('clinic.ejs');
+let getChuyenKhoaPage = async (req, res) => { // new function
+    let clinics = await db.Clinic.findAll();
+    res.render('clinic.ejs', { clinics: clinics });
 }
+
 
 let getChuyenKhoaSpecialtyPage = (req, res) => { // new function
     let specialty = req.params.specialty;
