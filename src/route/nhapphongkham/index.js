@@ -45,5 +45,8 @@ router.post('/', upload.single('image'),(req, res) => {
 router.get('/suaphongkham', (req, res) => {
   // TODO: Render a form for the user to enter new clinic information
 });
+router.put('/suaphongkham', upload.single('image'), (req, res) => {
+  // TODO: Call the putClinic function from the controller
+});
 
 module.exports = router;
