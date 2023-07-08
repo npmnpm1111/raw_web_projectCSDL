@@ -3,7 +3,10 @@ import homeController from "../controllers/homeController";
 import multer from 'multer'; // Import multer
 import db from '../models/index';
 import slugify from 'slugify'; // Thêm dòng này
+const clinicRoutes = require('./clinic');
+
 let router = express.Router();
+
 
 let initWebRoutes = (app) => {
     // Configure multer
@@ -15,7 +18,7 @@ let initWebRoutes = (app) => {
     router.get('/nhapphongkham', (req, res) => {
         res.render('nhapphongkham', { successMessage: null, errorMessage: null });
     });
-    
+    router.use('/clinic', clinicRoutes);
     router.post('/nhapphongkham', (req, res) => {
         const { name, address, description } = req.body;
     
@@ -56,28 +59,28 @@ let initWebRoutes = (app) => {
     router.get('/chuyen-khoa/than-kinh', (req, res) => {
         res.render('thankinh');
     });
-    router.get('/clinic/:slug', (req, res) => {
-        const slug = req.params.slug;
+    // router.get('/clinic/:slug', (req, res) => {
+    //     const slug = req.params.slug;
         
-        db.Clinic.findOne({
-            where: { slug: slug }
-        })
-        .then((clinic) => {
-            if (clinic) {
-                res.render('clinic-detail', { clinic: clinic });
-            } else {
-                res.status(404).send('Clinic not found.');
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-            res.status(500).send('DMM');
-        });
-    });
+    //     db.Clinic.findOne({
+    //         where: { slug: slug }
+    //     })
+    //     .then((clinic) => {
+    //         if (clinic) {
+    //             res.render('clinic-detail', { clinic: clinic });
+    //         } else {
+    //             res.status(404).send('Clinic not found.');
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //         res.status(500).send('DMM');
+    //     });
+    // });
         
-    router.get('/clinic', (req, res) => {
-        res.render('clinic');
-    });
+    // router.get('/clinic', (req, res) => {
+    //     res.render('clinic');
+    // });
     
     return app.use("/", router);
 }
