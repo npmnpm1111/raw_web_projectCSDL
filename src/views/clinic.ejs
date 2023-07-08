@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            margin-left: auto; /* Căn chỉnh từ bên lề trái */
+            margin-right: auto; /* Căn chỉnh từ bên lề phải */
+        }
+
+        .image {
+            display: inline-block;
+            width: 100%;
+            max-width: 300px; /* Điều chỉnh kích thước tối đa của khung ảnh */
+            text-align: center;
+        }
+
+        .image img {
+            width: 100%;
+            height: auto;
+            max-width: 100%; /* Điều chỉnh kích thước tối đa của ảnh */
+        }
+
+        .description {
+            text-align: center;
+        }
+
+        .button-description {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px; /* Thêm khoảng cách từ nút bấm đến ảnh */
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Các phòng khám</h1>
+        <div class="gallery">
+            <div class="image">
+                <img src="https://gamek.mediacdn.vn/133514250583805952/2022/6/18/-16555136658111107887341.jpg" alt="Image 1">
+                <button class="button-description" onclick="window.location.href='/chuyen-khoa/tim-mach'">Lee Sin</button>
+            </div>
+            <div class="image">
+                <img src="https://images.contentstack.io/v3/assets/blt187521ff0727be24/blt41c476486b063ef8/60ee13df31f9ee2ab08a4dfe/Yasuo_0.jpg" alt="Image 2">
+                <button class="button-description" onclick="window.location.href='/chuyen-khoa/than-kinh'">Yasuo</button>
+            </div>
+            <div class="image">
+                <img src="https://static.zerochan.net/Zed.full.2896954.jpg" alt="Image 3">
+                <button class="button-description" onclick="window.location.href='/chuyen-khoa/tim-mach'">Zed</button>
+            </div>
+            <div class="image">
+                <img src="https://static.zerochan.net/Master.Yi.full.2297318.jpg" alt="Image 4">
+                <button class="button-description" onclick="window.location.href='/chuyen-khoa/than-kinh'">Master Yi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
