@@ -67,23 +67,10 @@ let deleteCRUD = async (req, res) => {
     res.redirect('/thongtin');
 }
 
-let getChuyenKhoaPage = async (req, res) => { // new function
+let getClinicPage = async (req, res) => { // new function
     let clinics = await db.Clinic.findAll();
     res.render('clinic.ejs', { clinics: clinics });
 }
-
-
-let getChuyenKhoaSpecialtyPage = (req, res) => { // new function
-    let specialty = req.params.specialty;
-    res.render('chuyenkhoa_specialty.ejs', {specialty: specialty});
-}
-
-let putClinic = async(req,res) => {
-    let data = req.body;
-    await CRUDservices.updateClinicData(data);
-    return res.redirect('/nhapphongkham'); 
-}
-
 
 module.exports = {
     getHomePage: getHomePage,
@@ -93,8 +80,6 @@ module.exports = {
     displaygetCRUD: displaygetCRUD,
     geteditCRUD: geteditCRUD,
     putCRUD: putCRUD,
-    deleteCRUD: deleteCRUD, // Export the new function
-    getChuyenKhoaPage: getChuyenKhoaPage,
-    getChuyenKhoaSpecialtyPage: getChuyenKhoaSpecialtyPage,
-    putClinic: putClinic,
+    deleteCRUD: deleteCRUD, 
+    getClinicPage: getClinicPage,
 };
