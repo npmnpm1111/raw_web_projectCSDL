@@ -42,18 +42,22 @@ router.get('/edit/:slug', async (req, res) => {
   }
 });
 // POST route for /clinic/edit/:slug
+// POST route for /clinic/edit/:slug
 router.post('/edit/:slug', async (req, res) => {
   const slug = req.params.slug;
-  // Get the new content from req.body
+  const { name, address, description } = req.body;
   const clinic = await db.Clinic.findOne({ where: { slug: slug } });
   if (clinic) {
     // Update the clinic with the new content
-    // ...
+    clinic.name = name;
+    clinic.address = address;
+    clinic.description = description;
     await clinic.save();
     res.redirect('/clinic/' + slug);
   } else {
     res.status(404).send('Clinic not found.');
   }
 });
+
 
 module.exports = router;
