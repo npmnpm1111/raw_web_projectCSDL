@@ -20,31 +20,19 @@ router.get('/', (req, res) => {
   res.render('nhapphongkham', { successMessage: null, errorMessage: null });
 });
 
-router.post('/', upload.single('image'), async (req, res) => {
+router.post('/', upload.single('image'),(req, res) => {
   const { name, address, description } = req.body;
-  let slug = slugify(name, { lower: true, strict: true });
+  const slug = slugify(name, { lower: true, strict: true });
   const imagePath = '/uploads/' + req.file.filename;
-
-  // Check if the slug already exists in the database
-  let existingClinic = await db.Clinic.findOne({ where: { slug: slug } });
-  if (existingClinic) {
-    // If the slug already exists, append a number to it to make it unique
-    let originalSlug = slug;
-    let i = 1;
-    do {
-      slug = originalSlug + '-' + i;
-      existingClinic = await db.Clinic.findOne({ where: { slug: slug } });
-      i++;
-    } while (existingClinic);
-  }
 
   db.Clinic.create({
     name: name,
     address: address,
     description: description,
     slug: slug,
-    image: imagePath,
+    image: imagePath, // Thêm dòng này
   })
+  
   .then(() => {
     res.redirect('/clinic/' + slug);
   })
@@ -53,7 +41,6 @@ router.post('/', upload.single('image'), async (req, res) => {
     res.render('nhapphongkham.ejs', { successMessage: null, errorMessage: 'Đã xảy ra lỗi. Vui lòng thử lại sau.' });
   });
 });
-
 
 router.get('/suaphongkham', (req, res) => {
   // TODO: Render a form for the user to enter new clinic information
