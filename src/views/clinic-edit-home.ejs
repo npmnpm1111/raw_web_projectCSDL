@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% clinics.forEach(clinic => { %>
+            <tr>
+                <td><%= clinic.id %></td>
+                <td><%= clinic.name %></td>
+                <td><%= clinic.address %></td>
+                <td><a href="/clinic/edit/<%= clinic.slug %>">Edit</a></td>
+                <td><a href="/clinic/delete/<%= clinic.slug %>">Delete</a></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

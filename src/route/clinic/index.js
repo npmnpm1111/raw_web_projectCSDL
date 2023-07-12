@@ -63,5 +63,12 @@ router.post('/edit/:slug', async (req, res) => {
   }
 });
 
+router.get('/delete/:slug', async (req, res) => {
+  const slug = req.params.slug;
+  await CRUDservices.deleteClinic(slug);
+  res.redirect('/clinic/edit');
+});
+
+
 
 module.exports = router;
