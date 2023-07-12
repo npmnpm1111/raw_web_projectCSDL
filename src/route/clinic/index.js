@@ -42,7 +42,6 @@ router.get('/edit/:slug', async (req, res) => {
   }
 });
 // POST route for /clinic/edit/:slug
-// POST route for /clinic/edit/:slug
 router.post('/edit/:slug', async (req, res) => {
   const slug = req.params.slug;
   const { name, address, description } = req.body;
@@ -52,6 +51,11 @@ router.post('/edit/:slug', async (req, res) => {
     clinic.name = name;
     clinic.address = address;
     clinic.description = description;
+    clinic.introduction = req.body.introduction;
+    clinic.speciality = req.body.speciality;
+    clinic.doctors = req.body.doctors;
+    clinic.booking = req.body.booking;
+    clinic.location = req.body.location;
     await clinic.save();
     res.redirect('/clinic/' + slug);
   } else {
